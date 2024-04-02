@@ -27,7 +27,6 @@ document.addEventListener('mousemove', (e) => {
     if(isMousePressed){
         moveSelection(e);
         div.style.display = 'block';
-        console.log(startCoords, e.screenX, e.screenY);
     }
     colorizeSelectedSpans();
 })
@@ -58,11 +57,9 @@ function selectSpans() {
             s.style.position = "absolute";
             s.selected = true;
             s.startCoords = [e.clientX, e.clientY];
-            console.log(s.startCoords)
         });
 
         s.addEventListener('mousemove', (e) => {
-            console.log('move')
             if (s.selected) {
                 s.style.top = e.clientY - 3 + 'px';
                 s.style.left = e.clientX - 3 + 'px';
@@ -70,7 +67,6 @@ function selectSpans() {
         });
 
         s.addEventListener('mouseup', (e) => {
-            console.log(s.startCoords)
             s.selected = false;
             handleSwap(s);
         });
